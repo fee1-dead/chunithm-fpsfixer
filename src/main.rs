@@ -61,8 +61,8 @@ fn process_song(p: &Path, portion: &str, debug: bool) {
     let mut contents = fs::read_to_string(&music_xml).expect("failed to read music xml");
     let start = contents.find("<stageName>").unwrap();
     let end = contents.find("</stageName>").unwrap() + "</stageName>".len();
-    contents.insert_str(start, "\n<!-- PWNED BY FPSFIXER!!\n");
     contents.insert_str(end, "\n-->");
+    contents.insert_str(start, "\n<!-- PWNED BY FPSFIXER!!\n");
     contents.insert_str(start, portion);
     fs::write(&music_xml, contents).expect("failed to write music xml");
     println!("wrote to {}", music_xml.display());
